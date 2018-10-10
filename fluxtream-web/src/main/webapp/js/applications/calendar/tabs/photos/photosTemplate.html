@@ -1,0 +1,39 @@
+<template id="carousel">
+    <div id="photoViewContainer">
+        <a id="closePhotoViewer" href="#">&times;</a>
+        <div class="photoHolder">
+            {{#photos}}
+                <img class="photo photo-{{id}}" src="{{photoUrl}}">
+            {{/photos}}
+        </div>
+        <div id="photosCarousel" class="carousel">
+            <div class="carousel-inner">
+                {{#photos}}
+                <div id="photo-{{id}}" photoId="{{id}}" class="item{{#active}} active{{/active}}" style="overflow:none">
+                    <img onload="$(window).resize();" fullsize="photo-{{id}}" orientation="{{orientation}}" transformations="{{transformations}}" style="display:inline-block; max-height:100%; transform:{{transformations}}; -ms-transform:{{transformations}}; -webkit-transform:{{transformations}}; -o-transform:{{transformations}}" src="{{photoUrl}}">
+                </div>
+                {{/photos}}
+            </div>
+            {{#includeNav}}
+            <a class="carousel-control left" href="#photosCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#photosCarousel" data-slide="next">&rsaquo;</a>
+            {{/includeNav}}
+        </div>
+    </div>
+</template>
+<template id="thumbnailGroup">
+    <div class="dateHeadingGroup">
+        <hr class="priorRuler">
+        <div class="dateHeading placeholder hidden"></div>
+        <div class="dateHeading dateLabel"><a href="javascript:App.renderApp(App.activeApp.name,'{{state}}');">{{date}}, {{city}} ({{timezone}})</a>
+            <hr></div>
+    </div>
+    <div class='thumbnailGroup'>
+        {{#photos}}
+        <div class="photoThumbnail">
+            <span style="color:lightgray;position:relative;padding:2px;background-color:#000;">{{time}} {{ampm}}</span>
+            <img id="photo-{{id}}" src="{{photoUrl}}">
+        </div>
+        {{/photos}}
+    </div>
+</template>

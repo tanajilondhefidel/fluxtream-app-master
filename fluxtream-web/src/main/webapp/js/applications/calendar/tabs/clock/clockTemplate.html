@@ -1,0 +1,41 @@
+<template id="tooltip">
+    <div class="flx-clockToolTipContainer" notthide="true">
+        <div class="flx-toolTipBody strongBorder-{{orientation}}" style="border-color:{{color}}"> <!-- JS : Append strongBorder class with -Top, -Left, -Right, Bottom according to toolTip position / Append the right color class to override default -->
+            <span class="flx-toolTipTail-{{orientation}}" style="border-{{oppositeOrientation}}-color:{{color}}"></span> <!-- JS : Append class with -Top, -Left or -Right to change tail direction + define top/bottom/right/left arguments in the style attribute to give the tail it's position -->
+                <div class="flx-toolTipData">
+                    {{{tooltipData}}}
+                    <ul class="flx-toolTipLinks">
+                        <!-- <li><a href="#" id="tooltipLoadList">List <i class="icon-list"></i></a></li> -->
+                        {{#showCommentEdit}}
+                        <li><a href="#" id="tooltipEditComment">Edit Comment <i class="icon-comment"></i></a></li>
+                        {{/showCommentEdit}}
+                        {{#showBodyTrackLinks}}
+                        <li><a href="#" id="tooltipLoadTimeLine">Timeline <i class="icon-film"></i></a></li>
+                        <li><a href="#" id="tooltipLoadBodyTrack">Bodytrack <i class="icon-bookmark"></i></a></li>
+                        {{/showBodyTrackLinks}}
+                    </ul>
+                </div>
+
+
+            <div class="flx-toolTipContext">
+                <div class="flx-toolTipLocation">
+                    <h4><span>{{time}}{{ampm}}</span> last seen here: <strong id="lastSeenLocation"></strong></h4>
+                    <div>
+                        <div id="mapPlaceHolder" style="display:inline-block; width:100%; height:188px; position:relative;"></div>
+                    </div>
+                </div>
+                <div class="flx-toolTipWeather">
+                    <h4><span>{{temperature}}°{{temperatureUnit}}</span> {{weatherDescription}}</h4>
+                    <div class="weatherIcon">
+                        <img src="{{weatherIcon}}" style="width:100px; height:104px;"/>
+                    </div>
+                    <ul class="flx-weatherDetails">
+                        <li>Windspeed <span>{{windSpeed}} {{windSpeedUnit}}</span></li>
+                        <li>Humidity <span>{{humidity}}%</span></li>
+                        <li>Precipitation <span>{{precipitation}} {{precipitationUnit}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

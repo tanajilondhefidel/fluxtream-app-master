@@ -1,0 +1,50 @@
+<div class="row-fluid">
+    <div class="span12" id="calendar-menubar">
+        <div class="flx-timeMenu">
+            <div class="floater">
+                <a class="btn menuTodayButton calendar-navigation-button"><span>Today</span></a>
+                <a class="btn menuPrevButton calendar-navigation-button"><i class="icon-arrow-left"></i></a>
+                <div id="currentTimespanLabel">
+                    <h3><span>&nbsp;</span>&nbsp;&nbsp;</h3><a data-date-format="yyyy-mm-dd" id="datepicker"><i class="icon-calendar icon-large"></i></a>
+                </div>
+                <a class="btn menuNextButton calendar-navigation-button"><i class="icon-arrow-right"></i></a>
+            </div>
+            <div class="floater" id="time-menu-container">
+                <div class="btn-group flx-view-range" id="time-menu">
+                    <a id="dayViewBtn" unit="date" class="btn active">Day</a>
+                    <a id="weekViewBtn" unit="week" class="btn">Week</a>
+                    <a id="monthViewBtn" unit="month" class="btn">Month</a>
+                    <!--<a id="yearViewBtn" unit="year" class="btn">Year</a> Disabled for now-->
+                </div>
+            </div>
+            <div class="floater">
+                <h4 id="mainCity" class="flx-main-city-infos"></h4>
+                <div style="padding-top:4px" id="mainCityMetadata">
+                    <a id="visitedCitiesDetails" href="#">details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/>
+
+<div id="calendar-container" class="row-fluid">
+    <ul class="nav nav-tabs" id="calendarTabs">
+    </ul>
+    <div id="filtersContainer">
+        <ul id="selectedConnectors" class="flx-sourceFilters4">
+        </ul>
+    </div>
+    <div id="filterPlaceHolderElement" class="hidden"></div>
+    <div id="tabs"><span class="loading" style="
+position: fixed;
+top: 300px;
+font-size: 300px;
+text-align: center;
+left: 0;
+right: 0;
+z-index: 200000;
+opacity: 0.5"><i class="icon-refresh icon-spin"></i></div>
+</div>
+

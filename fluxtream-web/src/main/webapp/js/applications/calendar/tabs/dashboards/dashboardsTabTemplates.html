@@ -1,0 +1,100 @@
+<template id="addWidgetDialog">
+    <div class="modal fade" id="modal">
+        <div class="modal-header">
+            <h3>Add Widget<a href="#" class="close" data-dismiss="modal">&times;</a></h3>
+        </div>
+        <div class="modal-body">
+            <div id="availableWidgets">
+                {{#rows}}
+                <div class="row-fluid">
+                    {{#widgets}}
+                    <div class="span4" style="cursor:pointer">
+                        <a name="{{WidgetName}}">
+                            <img src="{{WidgetRepositoryURL}}/{{WidgetName}}/{{WidgetIcon}}" alt="" width=178 Height=120>
+                        </a>
+                        <p>{{WidgetDescription.en}}</p>
+                    </div>
+                    {{/widgets}}
+                </div>
+                {{/rows}}
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" onclick="App.closeModal()">Close</button>
+        </div>
+    </div>
+</template>
+<template id="manageDashboardsDropdown">
+    <div class="manage-dashboard">
+        <form class="well form-inline" action="javascript:void(0)">
+            <div class="dashboard-list-header">
+                <div class="setName input-append">
+                    <input type="text" placeholder="Dashboard name..."/>
+                    <button class="btn">Add</button>
+                </div>
+            </div>
+            <ul class="dashboards-list">
+                {{#dashboards}}
+                <li class="dashboard-list-item" id="dashboard-{{id}}" dashboardid="{{id}}">
+                    <div class="dashboard-list-item-name">{{name}}</div>
+                    <div class="remove">
+                        <a><i class="icon-trash"></i></a>
+                    </div>
+                </li>
+                {{/dashboards}}
+            </ul>
+        </form>
+    </div>
+</template>
+<template id="widgetsGrid">
+    <div class="row-fluid">
+        {{#rows}}
+        <div class="row-fluid">
+            {{#widgets}}
+            <div class="flx-widget span4" id="{{WidgetName}}-widget">
+                <header>
+                    <div class="flx-widget-controls">
+{{#HasSettings}}                        <a class="flx-widget-settings" id="{{WidgetName}}-widget-settings" style="cursor:pointer;"><i class="icon-cog"></i></a>{{/HasSettings}}
+                        <a class="flx-remove-widget" style="cursor:pointer;"><i class="icon-remove"></i></a>
+                    </div>
+                    <h3 class="flx-title" id="{{WidgetName}}-widget-title">{{WidgetTitle.en}}</h3>
+                </header>
+                <div class="flx-body">
+                </div>
+                <footer>
+                </footer>
+            </div>
+            {{/widgets}}
+        </div>
+        {{/rows}}
+    </div>
+</template>
+<template id="dashboardTabs">
+    <ul id="dashboardTabs" class="nav nav-tabs">
+        <li>
+            <button id="addWidgetButton" class="btn btn-small">Add Widget&nbsp;<i class="icon-plus"></i></button>
+            <button id="manageDashboardsButton" notthide="1" class="btn dropdown-toggle">Manage Dashboards&nbsp;<i class="icon-caret-down"></i></button>
+        </li>
+        {{#dashboards}}
+        <li style="cursor:pointer" class="dashboardName{{#active}} active{{/active}}" id="dashboard-{{id}}">
+            <a data-toggle="tab">{{name}}</a>
+        </li>
+        {{/dashboards}}
+    </ul>
+</template>
+<template id="widgetSettings">
+    <div class="modal fade" id="modal">
+        <div class="modal-header">
+            <h3>{{manifest.WidgetTitle.en}} Widget Settings<a href="#" class="close" data-dismiss="modal">&times;</a></h3>
+        </div>
+        <div class="modal-body" id="widgetSettings">
+            <div id="{{manifest.WidgetName}}-widgetSettings">
+                (this whole div will be replaced)
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" id="save-settings-{{manifest.WidgetName}}">Save</button>
+            <button class="btn" onclick="App.closeModal()">Cancel</button>
+        </div>
+    </div>
+</template>
